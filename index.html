@@ -49,21 +49,36 @@
     </style>
 </head>
 <body>
-    <header>Welcome</header>
-    <div class="content">
-        <div class="post">
-            <h2>Post Title 1</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor diam sit amet urna scelerisque, nec tincidunt velit feugiat.</p>
-        </div>
-        <div class="post">
-            <h2>Post Title 2</h2>
-            <p>Sed euismod nec lacus a posuere. Integer id elit efficitur, ultrices eros ut, vehicula leo.</p>
-        </div>
-        <div class="post">
-            <h2>Post Title 3</h2>
-            <p>Vestibulum non turpis eget ex viverra fermentum. Integer vitae libero id neque gravida semper.</p>
-        </div>
-    </div>
-    <footer>&copy; Autor: María José Villafuerte, 22129</footer>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const Post = ({ title, content }) => {
+            return (
+                <div className="post">
+                    <h2>{title}</h2>
+                    <p>{content}</p>
+                </div>
+            );
+        };
+
+        const App = () => {
+            return (
+                <div>
+                    <header>Welcome</header>
+                    <div className="content">
+                        <Post title="Post Title 1" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor diam sit amet urna scelerisque, nec tincidunt velit feugiat." />
+                        <Post title="Post Title 2" content="Sed euismod nec lacus a posuere. Integer id elit efficitur, ultrices eros ut, vehicula leo." />
+                        <Post title="Post Title 3" content="Vestibulum non turpis eget ex viverra fermentum. Integer vitae libero id neque gravida semper." />
+                    </div>
+                    <footer>&copy; Autor: María José Villafuerte, 22129</footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
